@@ -3,7 +3,12 @@ import ProductCard from './ProductCard'
 import { games } from '@/data/products'
 
 const getPost= async()=>{
-   const response = await fetch('http://localhost:3000/api/productos')
+   const response = await fetch('http://localhost:3000/api/productos',{
+    cache:'force-cache',
+    next:{
+      tags:['productos']
+    }
+   })
    if(!response.ok){
     throw new Error("Wrong get data")
    }
@@ -14,7 +19,7 @@ const FeaturedProduct = async() => {
   const data= await getPost()
   return (
     <div className="pt-[6rem] pb-[3rem] bg-gray-900">
-        <div className="w-[80%] mx-auto flex items-center justify-between">
+        <div className=" flex items-center justify-between">
 
             <h1 className="md:text-[28px] text-[22px] 1g:text-[34px] text-white">
             Productos destacados

@@ -15,7 +15,9 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
     <html lang="en">    
       <body>
         <Header/>
-        {children}
+        <div className="container">
+          {children}
+        </div>
       </body>
     </html>
   );

@@ -1,6 +1,5 @@
 // import Image from "next/image";
 // import styles from './main.module.scss'
-import Header from './components/ui/Header'
 import TopProducts from './components/ui/TopProducts';
 
 
