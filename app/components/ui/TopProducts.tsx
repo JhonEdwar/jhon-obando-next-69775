@@ -2,7 +2,16 @@ import React from 'react'
 import ProductCard from './ProductCard'
 import { games } from '@/data/products'
 
-const FeaturedProduct = () => {
+const getPost= async()=>{
+   const response = await fetch('http://localhost:3000/api/productos')
+   if(!response.ok){
+    throw new Error("Wrong get data")
+   }
+   return response.json()
+}
+
+const FeaturedProduct = async() => {
+  const data= await getPost()
   return (
     <div className="pt-[6rem] pb-[3rem] bg-gray-900">
         <div className="w-[80%] mx-auto flex items-center justify-between">
@@ -18,8 +27,8 @@ const FeaturedProduct = () => {
                 
         <div className="grid mt-[2rem] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 w-[80%] mx-auto">
            {
-            games.map((game)=>{
-             return <ProductCard key={game.id} id={game.id} image={game.image} category={game.category} title={game.title} price={game.price} />
+            games.map((data)=>{
+             return <ProductCard key={data.id} id={data.id} image={data.image} category={data.category} title={data.title} price={data.price} />
             })
           }
 
