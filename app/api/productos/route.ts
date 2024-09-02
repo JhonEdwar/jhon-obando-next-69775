@@ -7,7 +7,7 @@ const sleep= (timer:number)=>{
 }
 
 export async function GET(){
-    await sleep(1000)
+    await sleep(4000)
     revalidateTag('productos')
     return NextResponse.json(games)
 }

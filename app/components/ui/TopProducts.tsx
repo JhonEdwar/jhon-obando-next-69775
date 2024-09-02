@@ -1,10 +1,19 @@
 import React from 'react'
 import ProductCard from './ProductCard'
-import { games } from '@/data/products'
+// import { games } from '@/data/products'
+
+interface Game {
+  id: string;          
+  image: string;
+  category: string;
+  title: string;
+  price: string;        
+}
+
 
 const getPost= async()=>{
    const response = await fetch('http://localhost:3000/api/productos',{
-    cache:'force-cache',
+    cache:'no-store',
     next:{
       tags:['productos']
     }
@@ -32,8 +41,8 @@ const FeaturedProduct = async() => {
                 
         <div className="grid mt-[2rem] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 w-[80%] mx-auto">
            {
-            games.map((data)=>{
-             return <ProductCard key={data.id} id={data.id} image={data.image} category={data.category} title={data.title} price={data.price} />
+            data.map((game:Game)=>{
+             return <ProductCard key={game.id} id={game.id} image={game.image} category={game.category} title={game.title} price={game.price} />
             })
           }
 
