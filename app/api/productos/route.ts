@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server";
-import { games } from '@/data/products'
-import { revalidateTag } from "next/cache";
+import { collection, getDocs, query } from 'firebase/firestore'
+import { db } from "@/firebase/config";
 
-const sleep= (timer:number)=>{
-    return new Promise ((resolve)=>{setTimeout(resolve,timer)})
-}
 
-export async function GET(){
-    await sleep(4000)
-    revalidateTag('productos')
-    return NextResponse.json(games)
+
+
+export async function GET(request:Request){
+    const productosRef= collection(db, "productos")
+    const q = query(productosRef)
+    const querySnapshot=await getDocs(q)
+    const docs=querySnapshot.docs.map(doc=>doc.data())
+    return NextResponse.json(docs)
+
 }
