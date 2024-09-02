@@ -1,13 +1,32 @@
 import React from 'react'
-import { games } from '@/data/products'
+// import {useParams} from 'next/navigation'
+// import { games } from '@/data/products'
 import Image from 'next/image';
 import { HeartIcon,ShoppingBagIcon } from '@heroicons/react/24/solid'
 import Header from '@/app/components/ui/Header';
 
 
-const Juego = ({params:{juego}}:{params:{juego:string}}) => {
-    const data= games.find((game)=>(game.id == juego))
+const getData=async(id) =>{
+    console.log(`fetch de data para ${id}`);
+    const response= await fetch(`http://localhost:3000/api/productos/${id}`)
+    
+    console.log('Response:', response);
 
+
+    if (!response.ok) {
+        const errorMessage = `Error fetching data: ${response.status} ${response.statusText}`;
+        console.error(errorMessage);
+        throw new Error(errorMessage);
+    }
+
+    const data = await response.json();
+    console.log('Data:', data); 
+    return data;
+}
+
+const Juego = async ({params}) => {
+    const {id}=params
+    const data=await getData(id)
     return (
         <>       
         <div  className=" h-screen pt-[6rem] pb-[3rem] bg-gray-900 flex justify-center">

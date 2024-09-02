@@ -39,7 +39,7 @@ const ProductCard = ({id,image,category,title,price}:Props) => {
                 <ShoppingBagIcon className="w-[1.2rem] h-[1.2rem] text-orange-400" />
             </div>
         </div>
-        <Link href={`/productos/${id}`}>
+        <Link href={`/producto/${id}`}>
             <BotonSecondary>
             Ver detalle
             </BotonSecondary>
