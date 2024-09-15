@@ -24,8 +24,11 @@ const getPost= async()=>{
    return response.json()
 }
 
+
 const FeaturedProduct = async() => {
   const data= await getPost()
+  console.log("esta es la info del firebase " + data)
+
   return (
     <div className="pt-[6rem] pb-[3rem] bg-gray-900">
         <div className=" flex items-center justify-between">

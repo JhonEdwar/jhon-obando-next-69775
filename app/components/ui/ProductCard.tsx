@@ -14,6 +14,8 @@ price:string;
 }
 
 const ProductCard = ({id,image,category,title,price}:Props) => {
+    console.log("este es el ID !!!" + id)
+
 
   return (
     <div className="w-[100%] h-fit">

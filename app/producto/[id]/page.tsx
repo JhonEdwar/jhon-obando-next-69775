@@ -6,11 +6,10 @@ import { HeartIcon,ShoppingBagIcon } from '@heroicons/react/24/solid'
 import Header from '@/app/components/ui/Header';
 
 
-const getData=async(id) =>{
-    console.log(`fetch de data para ${id}`);
-    const response= await fetch(`http://localhost:3000/api/productos/${id}`)
+const getData=async(id:string) =>{
+    const response= await fetch(`http://localhost:3000/api/producto/${id}`)
     
-    console.log('Response:', response);
+    console.log('y que nos trae de la await --------------------: ', response);
 
 
     if (!response.ok) {
@@ -24,8 +23,10 @@ const getData=async(id) =>{
     return data;
 }
 
-const Juego = async ({params}) => {
+const Juego = async ({params}: { params: { id: string } }) => {
+
     const {id}=params
+    console.log(`aquie hay un id? ${id}`);
     const data=await getData(id)
     return (
         <>       
