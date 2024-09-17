@@ -4,6 +4,8 @@ import React from 'react'
 import Image from 'next/image';
 import { HeartIcon,ShoppingBagIcon } from '@heroicons/react/24/solid'
 import Header from '@/app/components/ui/Header';
+import Counter from '@/app/components/ui/counter';
+import CountSelector from '@/app/components/ui/CountSelector';
 
 
 const getData=async(id:string) =>{
@@ -26,13 +28,12 @@ const getData=async(id:string) =>{
 const Juego = async ({params}: { params: { id: string } }) => {
 
     const {id}=params
-    console.log(`aquie hay un id? ${id}`);
     const data=await getData(id)
     return (
         <>       
-        <div  className=" h-screen pt-[6rem] pb-[3rem] bg-gray-900 flex justify-center">
+        <div  className=" h-screen pt-[6rem] pb-[3rem] bg-gray-900 flex justify-center ">
             
-                <div className="w-[80%] h-fit flex flex-col items-center justify-center">
+                <div className="w-[800px] h-fit flex flex-col items-center justify-center">
                     <Image
                         src={`${data?.image}`}
                         alt={`${data?.title}`}
@@ -54,6 +55,7 @@ const Juego = async ({params}: { params: { id: string } }) => {
                             </div>
                             <ShoppingBagIcon className="w-[1.2rem] h-[1.2rem] text-orange-400" />
                         </div>
+                        <CountSelector item={data}/>
                     </div>
                 </div>
             

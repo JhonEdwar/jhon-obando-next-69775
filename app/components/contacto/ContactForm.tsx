@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react"
-import BotonSecondary from "../ui/BotonSecondary" 
+import BotonSecondary from "../ui/Button" 
 
 import React from 'react'
 

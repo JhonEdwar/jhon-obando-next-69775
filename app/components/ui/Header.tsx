@@ -3,16 +3,16 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link';
 import { MagnifyingGlassIcon, ShoppingBagIcon,HeartIcon, UserIcon } from '@heroicons/react/24/solid'
-import CounterCart from './CounterCart';
+import CounterBadge from './CounterBadge';
 import ShoppingButton from './ShoppingButton';
 import { useState } from 'react';
 
 const Header= () => {
-   const[count, setCount]=useState(0)
-   const sumCount=()=>{
-    console.log('test')
-    setCount(count+1)
-   }
+  const[count, setCount]=useState(0)
+  const sumCount=()=>{
+   console.log('test')
+   setCount(count+1)
+  }
 
   return (
     <div className="h-[13vh] bg-gray-800 sticky	top-0 z-10">
@@ -35,10 +35,10 @@ const Header= () => {
         <Link href="/pages/nosotros" className="font-bold text-white">Nosotros</Link>
         <Link href="/pages/contacto" className="font-bold text-white">Contacto</Link>
         <div className="relative">
-          <ShoppingButton onClick={sumCount}/> 
-          <CounterCart>
+          <ShoppingButton/> 
+          <CounterBadge>
             {count}
-          </CounterCart>
+          </CounterBadge>
         </div>
           <HeartIcon className="w-[2rem] h-[2rem] text-white cursor-pointer" />
           <UserIcon className="w-[2rem] h-[2rem] text-white cursor-pointer" />

@@ -2,13 +2,10 @@
 import React from 'react'
 import { ShoppingBagIcon } from '@heroicons/react/24/solid'
 
-interface sumCounterI{
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-}
 
-const ShoppingButton: React.FC<sumCounterI> = ({onClick}) => {
+const ShoppingButton = () => {
   return (
-    <button onClick={onClick}>
+    <button>
         <ShoppingBagIcon className="w-[2rem] h-[2rem] text-white cursor-pointer" />
     </button>
   )
