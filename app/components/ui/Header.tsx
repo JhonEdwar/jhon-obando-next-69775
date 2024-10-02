@@ -8,11 +8,6 @@ import ShoppingButton from './ShoppingButton';
 import { useState } from 'react';
 
 const Header= () => {
-  const[count, setCount]=useState(0)
-  const sumCount=()=>{
-   console.log('test')
-   setCount(count+1)
-  }
 
   return (
     <div className="h-[13vh] bg-gray-800 sticky	top-0 z-10">
@@ -36,9 +31,8 @@ const Header= () => {
         <Link href="/pages/contacto" className="font-bold text-white">Contacto</Link>
         <div className="relative">
           <ShoppingButton/> 
-          <CounterBadge>
-            {count}
-          </CounterBadge>
+          <CounterBadge/>
+
         </div>
           <HeartIcon className="w-[2rem] h-[2rem] text-white cursor-pointer" />
           <UserIcon className="w-[2rem] h-[2rem] text-white cursor-pointer" />
