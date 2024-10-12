@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Header from './components/ui/Header'
 import "./globals.css";
 import { CartProvider } from "./components/context/CartContext";
-
+import { AuthProvider } from "./components/context/AuthContext";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -15,12 +15,14 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
   return (
     <html lang="en">    
       <body>
-        <CartProvider>
-          <Header/>
-          <div className="container">
-            {children}
-          </div>
-        </CartProvider>
+      <AuthProvider>
+          <CartProvider>
+            <Header/>
+            <div className="container">
+              {children}
+            </div>
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

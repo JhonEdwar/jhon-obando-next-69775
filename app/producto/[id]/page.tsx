@@ -4,7 +4,7 @@ import React from 'react'
 import Image from 'next/image';
 import { HeartIcon,ShoppingBagIcon } from '@heroicons/react/24/solid'
 import Header from '@/app/components/ui/Header';
-import Counter from '@/app/components/ui/counter';
+import Counter from '@/app/components/ui/Counter';
 import CountSelector from '@/app/components/ui/CountSelector';
 
 

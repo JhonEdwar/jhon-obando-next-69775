@@ -1,7 +1,14 @@
 'use client'
 import { createContext, useContext, useState } from "react";
 
-const CartContext = createContext()
+interface CartContextType {
+    addToCart: (item: any[]) => void;
+    cantItems: number;
+  }
+
+const CartContext = createContext<CartContextType | undefined>(undefined);
+
+export const useCartContext=()=>useContext(CartContext)
 
 
 export const CartProvider= ({children})=>{
@@ -21,4 +28,3 @@ export const CartProvider= ({children})=>{
     )   
 }
 
-export const useCartContext=()=>useContext(CartContext)
