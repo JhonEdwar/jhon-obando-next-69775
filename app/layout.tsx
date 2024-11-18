@@ -3,7 +3,6 @@ import Header from './components/ui/Header'
 import "./globals.css";
 import { CartProvider } from "./components/context/CartContext";
 import { AuthProvider } from "./components/context/AuthContext";
-
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

@@ -2,9 +2,12 @@
 import React from 'react'
 import { useState } from 'react'
 import Button from '../ui/Button'
+import { useAuthContext } from '../context/AuthContext'
 
 
-export const CreateLogin = () => {
+const LoginForm = () => {
+    const {registerUser}=useAuthContext()
+
     const[values,setValues]=useState({
         email:'',
         password:''
@@ -15,10 +18,23 @@ export const CreateLogin = () => {
             ...values,
             [e.target.name]: e.target.value,
           });
+
     }
+    // const [error, setError] = useState<string | null>(null);
 
     const handleSubmit= async(e)=>{
-        e.preventDefault()
+        e.preventDefault();
+        try {
+            const userCredential = await registerUser(values);
+      
+            if (userCredential) {
+              // User creation successful
+              console.log('User created successfully:', userCredential + 'aaappppppppppppppppaaaffffff');
+            }
+          } catch (error) {
+            console.error('Error during registration:', error + 'jaaaaaaaajdslkfjsdlkfjsdlkjfsdlkjflksdjflksdjflsdkjflsdkjflskdjfklsdjlfksjkf');
+            // Handle registration errors (e.g., display error message)
+          }
     }
 
 
@@ -43,10 +59,14 @@ export const CreateLogin = () => {
                 name="password"
                 onChange={handleChange}
             />
-            <Button type='submit'>Enviar</Button>
+            <Button type="submit" className="mr-4">
+                Registrar usuario
+            </Button>   
 
          </form>
 
     </div>
   )
 }
+
+export default LoginForm

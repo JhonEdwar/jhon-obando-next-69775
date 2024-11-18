@@ -11,8 +11,6 @@ import CountSelector from '@/app/components/ui/CountSelector';
 const getData=async(id:string) =>{
     const response= await fetch(`http://localhost:3000/api/producto/${id}`)
     
-    console.log('y que nos trae de la await --------------------: ', response);
-
 
     if (!response.ok) {
         const errorMessage = `Error fetching data: ${response.status} ${response.statusText}`;
