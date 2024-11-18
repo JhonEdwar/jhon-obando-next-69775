@@ -6,7 +6,7 @@ import { useAuthContext } from '../context/AuthContext'
 
 
 const LoginForm = () => {
-    const {registerUser}=useAuthContext()
+    const {registerUser,loginUser}=useAuthContext()
 
     const[values,setValues]=useState({
         email:'',
@@ -24,17 +24,15 @@ const LoginForm = () => {
 
     const handleSubmit= async(e)=>{
         e.preventDefault();
-        try {
-            const userCredential = await registerUser(values);
+        // try {
+        //     const userCredential = await registerUser(values);
       
-            if (userCredential) {
-              // User creation successful
-              console.log('User created successfully:', userCredential + 'aaappppppppppppppppaaaffffff');
-            }
-          } catch (error) {
-            console.error('Error during registration:', error + 'jaaaaaaaajdslkfjsdlkfjsdlkjfsdlkjflksdjflksdjflsdkjflsdkjflskdjfklsdjlfksjkf');
-            // Handle registration errors (e.g., display error message)
-          }
+        //     if (userCredential) {
+        //       console.log('User created successfully:', userCredential + 'aaappppppppppppppppaaaffffff');
+        //     }
+        //   } catch (error) {
+        //     console.error('Error during registration:', error + 'jaaaaaaaajdslkfjsdlkfjsdlkjfsdlkjflksdjflksdjflsdkjflsdkjflskdjfklsdjlfksjkf');
+        //   }
     }
 
 
@@ -59,9 +57,8 @@ const LoginForm = () => {
                 name="password"
                 onChange={handleChange}
             />
-            <Button type="submit" className="mr-4">
-                Registrar usuario
-            </Button>   
+            <Button onClick={()=>registerUser(values)} className="mr-4">  Registrar usuario </Button>
+            <Button onClick={()=>loginUser(values)} className="mr-4">  Iniciar sesión </Button>   
 
          </form>
 

@@ -1,6 +1,6 @@
 'use client'
 import { auth } from "@/firebase/config";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext()
@@ -47,8 +47,19 @@ export const AuthProvider= ({children})=>{
           console.log('User uid:', user.uid);
     }
 
+    const loginUser=async(values)=>{
+      const userCredential=await signInWithEmailAndPassword(auth,values.email,values.password)
+      const usser=userCredential.user
+      setUser({
+        logged:true,
+        email:user.email,
+        uid:user.uid
+      })
+
+    }
+
     return(
-        <AuthContext.Provider value={{user,registerUser}}>
+        <AuthContext.Provider value={{user,registerUser,loginUser}}>
             {children}
         </AuthContext.Provider>
     )   
